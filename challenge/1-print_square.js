@@ -1,15 +1,14 @@
 #!/usr/bin/node
-/**
- * Print a square with the character "X"
- * The size is the first CLI argument
- */
+/*
+  Print a square with the character '#'
+  The size of the square is the first argument of the program.
+*/
 
 const size = parseInt(process.argv[2], 10);
 
-if (isNaN(size)) {
-  console.log("Missing size");
-} else {
+if (!Number.isNaN(size)) {
+  const line = '#'.repeat(size);
   for (let i = 0; i < size; i++) {
-    console.log("X".repeat(size));
+    console.log(line);
   }
 }
