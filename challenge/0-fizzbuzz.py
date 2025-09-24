@@ -1,32 +1,37 @@
 #!/usr/bin/python3
-""" FizzBuzz
-Prints numbers from 1 to n with Fizz, Buzz and FizzBuzz replacements
-"""
+""" FizzBuzz — print numbers 1..n on ONE line separated by spaces """
 
 import sys
 
 
-def fizzbuzz(n):
-    """Prints the FizzBuzz sequence up to n"""
+def fizzbuzz(n: int) -> None:
+    if n < 1:
+        return
+    out = []
     for i in range(1, n + 1):
         if i % 15 == 0:
-            print("FizzBuzz")
+            out.append("FizzBuzz")
         elif i % 3 == 0:
-            print("Fizz")
+            out.append("Fizz")
         elif i % 5 == 0:
-            print("Buzz")
+            out.append("Buzz")
         else:
-            print(i)
+            out.append(str(i))
+    print(" ".join(out))
 
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
+        print("Missing number")
         print("Usage: ./0-fizzbuzz.py <number>")
+        print("Example: ./0-fizzbuzz.py 89")
         sys.exit(1)
     try:
         number = int(sys.argv[1])
     except ValueError:
-        print("Input must be an integer")
+        print("Missing number")
+        print("Usage: ./0-fizzbuzz.py <number>")
+        print("Example: ./0-fizzbuzz.py 89")
         sys.exit(1)
 
     fizzbuzz(number)
