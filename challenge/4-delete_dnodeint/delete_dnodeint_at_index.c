@@ -17,21 +17,21 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 
     node = *head;
 
-    /* Walk to the node at position index */
+    /* walk to index */
     for (i = 0; node != NULL && i < index; i++)
         node = node->next;
 
-    if (node == NULL) /* index out of range */
+    if (node == NULL) /* out of range */
         return (-1);
 
-    /* If deleting the head, move *head forward */
-    if (node->prev == NULL)
+    /* unlink from previous */
+    if (node->prev == NULL)          /* deleting head */
         *head = node->next;
     else
         node->prev->next = node->next;
 
-    /* If not deleting the tail, fix the backward link */
-    if (node->next != NULL)
+    /* unlink from next */
+    if (node->next != NULL)          /* not deleting tail */
         node->next->prev = node->prev;
 
     free(node);
