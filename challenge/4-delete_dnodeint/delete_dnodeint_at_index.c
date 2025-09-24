@@ -29,7 +29,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
     {
         *head = node->next;
         if (*head != NULL)
-            (*head)->prev = NULL;   /* ← explicite, tout de suite */
+            (*head)->prev = NULL;   /* explicite: remettre prev à NULL tout de suite */
     }
     else
     {
