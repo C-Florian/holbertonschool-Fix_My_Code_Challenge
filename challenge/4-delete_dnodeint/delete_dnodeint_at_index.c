@@ -24,14 +24,14 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
     if (node == NULL) /* out of range */
         return (-1);
 
-    /* unlink from previous */
-    if (node->prev == NULL)          /* deleting head */
+    /* unlink from previous (head case advances *head) */
+    if (node->prev == NULL)
         *head = node->next;
     else
         node->prev->next = node->next;
 
-    /* unlink from next */
-    if (node->next != NULL)          /* not deleting tail */
+    /* unlink from next (tail case does nothing here) */
+    if (node->next != NULL)
         node->next->prev = node->prev;
 
     free(node);
